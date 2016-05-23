@@ -1,0 +1,34 @@
+﻿@model Project.Service.Models.VehicleMakeVM
+<div class="modal-header">
+    <h3 class="modal-title">Add New Vehicle Make</h3>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Name, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control required" })
+                    <div>
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => Model.Abrv, new { @class = "control-label col-sm-3" })
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.Abrv, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <input class="btn btn-primary" type="submit" value="Save" />
+        <button class="btn btn-warning" data-dismiss="modal" onclick="location.href= '@Url.Action("Index", "VehicleMake")'">Back</button>
+    </div>
+}
